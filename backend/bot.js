@@ -7,7 +7,7 @@ const config = require('../config.json')
 client.on('ready', () => {
   console.log("Bot connected sucessfully")
       // Loop from my stackoverflow question that iterates through multiple arrays using an element from previous array
-      module.exports.lots_of_messages_getter = async function lots_of_messages_getter(limit = 1000) {                              // Create async function
+      module.exports.lots_of_messages_getter = async function lots_of_messages_getter(limit = 500) {                              // Create async function
         sum_messages = [];                                                              // Create sum_messages as empty array
         let last_id;                                                                    // Create var to hold id of last message of array
         var generalChannel = client.channels.get("546476817213685762")

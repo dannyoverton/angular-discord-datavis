@@ -1,1 +1,14 @@
-<div class="chart"></div>
+<app-header></app-header>
+<mat-accordion multi="true" *ngIf="userData.length > 0">
+  <mat-expansion-panel *ngFor="let post of userData">
+    <mat-expansion-panel-header>
+      {{ post.users }}
+    </mat-expansion-panel-header>
+    <p>{{ post.count }}</p>
+    <mat-action-row>
+      <button mat-button color="accent">Warm</button>
+      <button mat-button color="warn">Cold</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="userData.length <= 0">No posts added yet!</p>

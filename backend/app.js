@@ -36,10 +36,43 @@ app.get("/api/users", cors(), (req, res, next) => {
     userList = [];
     for (i = 0; i < msg.length; i++) {
       userList.push(msg[i].author.username)
-
     }
+      // Parsing the data down to the info we need because our bot gets EVERYTHING. Check links for more details
+      // (one is for getting the unique users and one is for getting the count)
+      const counts = {}; // https://stackoverflow.com/questions/15052702/count-unique-elements-in-array-without-sorting
+      for (var i = 0; i < userList.length; i++) {
+        counts[userList[i]] = 1 + (counts[userList[i]] || 0);
+      }
+
+      function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+      }
+
+      // usage example:   https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+      let a = userList;
+      let unique = a.filter(onlyUnique);
+      let result = Object.values(counts);
+      var posts = []
+
+    // SOLUTION FOUND HERE https://stackoverflow.com/questions/42448966/combine-the-values-of-two-arrays-into-object
+    // Basically it takes two seperate arrays and combines them into an object with key:value pairs
+    unique.forEach((v, i) => {
+      var obj = {};
+      obj.users = v;
+      obj.count = result[i];
+      posts.push(obj)
+     })
+
+    // for (i = 0; i < unique.length; i++) {
+    //   posts = [
+    //     {
+    //       users: unique[i++],
+    //       count: result[i++]
+    //     }
+    //   ]
+    // }
     res.json({
-      posts: userList
+      posts: posts
     })
   })
 
