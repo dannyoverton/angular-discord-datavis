@@ -30,6 +30,7 @@
     "discord.js": "^11.4.2",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "fast-safe-stringify": "^2.0.6",
     "hammerjs": "^2.0.8",
     "ng2-charts": "^2.3.0",
     "rxjs": "~6.5.2",

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const Discord = require('discord.js');
 const client = new Discord.Client()
 const cors = require('cors')
+const safeStringify = require('fast-safe-stringify')
 
 const bot = require('./bot');
 
@@ -63,20 +64,22 @@ app.get("/api/users", cors(), (req, res, next) => {
       posts.push(obj)
      })
 
-    // for (i = 0; i < unique.length; i++) {
-    //   posts = [
-    //     {
-    //       users: unique[i++],
-    //       count: result[i++]
-    //     }
-    //   ]
-    // }
     res.json({
       posts: posts
     })
+    next();
   })
 
 })
+
+app.get("/api/messages", cors(), (req, res, next) => {
+  bot.lots_of_messages_getter().then((msg) => {
+    msglist = msg;
+    res.json(safeStringify(msglist));
+  })
+
+ })
+
 
 client.login(config.token)
 module.exports = app;
