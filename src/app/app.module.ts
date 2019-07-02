@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 import {
   MatInputModule,
   MatCardModule,
@@ -13,12 +14,14 @@ import {
 import { AppComponent } from './app.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { HeaderComponent } from './header/header.component';
+import { GraphsComponent } from './graphs/graphs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarChartComponent,
-    HeaderComponent
+    HeaderComponent,
+    GraphsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { HeaderComponent } from './header/header.component';
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
